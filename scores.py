@@ -5,8 +5,6 @@
 # Load scores from a file.
 # Exit the program.
 
-import os
-
 def add(grades):
   name = input("Enter student name: ")
   while True:
