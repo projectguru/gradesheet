@@ -1,9 +1,3 @@
-# View all scores.
-# Calculate the average grade.
-# Save scores to a file.
-# Load scores from a file.
-# Exit the program.
-
 def add(grades):
   name = input("Enter student name: ")
   while True:
