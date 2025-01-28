@@ -1,11 +1,11 @@
-def add(grades):
-  name = input("Enter student name: ")
+def add(scores):
+  name = input("Enter name: ")
   while True:
     try:
-      grade = int(input("Enter student score (0-100): "))
-      if 0 <= grade <= 100:
-        grades[name] = grade
-        print(f"Grade for {name} added successfully!")
+      score = int(input("Enter score (0-100): "))
+      if 0 <= score <= 100:
+        scores[name] = score
+        print(f"Score for {name} added successfully!")
         break
       else:
         print("Invalid input. Please enter a number between 0 and 100.")
@@ -13,39 +13,39 @@ def add(grades):
       print("Invalid input. Please enter a number.")
 
 
-def report(grades):
-  if not grades:
+def report(scores):
+  if not scores:
     print("No scores entered yet.")
   else:
     print("\nStudent Scores:")
-    for student, grade in grades.items():
-      print(f"{student}: {grade}")
+    for student, score in scores.items():
+      print(f"{student}: {score}")
 
-def average(grades):
-  if not grades:
-    print("No grades entered yet.")
+def average(scores):
+  if not scores:
+    print("No scores entered yet.")
   else:
-    average_grade = sum(grades.values()) / len(grades)
-    print(f"Average score: {average_grade:.2f}")
+    average_score = sum(scores.values()) / len(scores)
+    print(f"Average score: {average_score:.2f}")
 
-def save(grades):
+def save(scores):
   filename = input("Enter filename to save scores: ")
   try:
-    with os.open(filename, 'w') as file:
-      for student, grade in grades.items():
-        file.write(f"{student},{grade}\n")
-    print(f"Grades saved to {filename}")
+    with open(filename, 'w') as file:
+      for student, score in scores.items():
+        file.write(f"{student},{score}\n")
+    print(f"Scores saved to {filename}")
   except Exception as e:
     print(f"Error saving scores: {e}")
 
-def openFrom(grades):
+def openFrom(scores):
   filename = input("Enter filename to load scores from:")
   try:
-    with os.open(filename, 'r') as file:
-      grades.clear()  # Clear existing grades before loading
+    with open(filename, 'r') as file:
+      scores.clear()  # Clear existing scores before loading
       for line in file:
-        student, grade = line.strip().split(',')
-        grades[student] = int(grade)
+        student, score = line.strip().split(',')
+        scores[student] = int(score)
     print(f"Scores loaded from {filename}")
   except FileNotFoundError:
     print(f"File '{filename}' not found.")
@@ -54,7 +54,7 @@ def openFrom(grades):
 
 
 def load():
-    grades = {}
+    scores = {}
 
     while True:
         print("\nMenu:")
@@ -69,15 +69,15 @@ def load():
 
         match choice:
           case "1":
-            add(grades)
+            add(scores)
           case "2":
-            report(grades)
+            report(scores)
           case "3":
-            average(grades)
+            average(scores)
           case "4":
-            save(grades)
+            save(scores)
           case "5":
-            openFrom(grades)
+            openFrom(scores)
           case "6":
             print("Exiting the program...")
             break
