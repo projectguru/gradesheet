@@ -1,16 +1,14 @@
 def add(scores):
   name = input("Enter name: ")
-  while True:
-    try:
-      score = int(input("Enter score (0-100): "))
-      if 0 <= score <= 100:
-        scores[name] = score
-        print(f"Score for {name} added successfully!")
-        break
-      else:
-        print("Invalid input. Please enter a number between 0 and 100.")
-    except ValueError:
-      print("Invalid input. Please enter a number.")
+  try:
+    score = int(input("Enter score (0-100): "))
+    if 0 <= score <= 100:
+      scores[name] = score
+      print(f"Score for {name} added successfully!")
+    else:
+      print("Invalid input. Please enter a number between 0 and 100.")
+  except ValueError:
+    print("Invalid input. Please enter a number.")
 
 
 def report(scores):
