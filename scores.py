@@ -1,4 +1,3 @@
-# prompt: create a function that creates a menu and waits for user input for the following options: Add a student grade.
 # View all scores.
 # Calculate the average grade.
 # Save scores to a file.
